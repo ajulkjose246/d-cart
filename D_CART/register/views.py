@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth
 
+
 def register(request):
     if request.method == "POST":
         fname = request.POST.get('fname')
@@ -22,7 +23,8 @@ def register(request):
                 return redirect('/register/')
     else:
         return render(request, 'register.html')
-    
+
+
 def login(request):
     if request.method == "POST":
         username = request.POST.get('username')
@@ -35,3 +37,8 @@ def login(request):
             return render(request, 'login.html')
     else:
         return render(request, 'login.html')
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect('/')

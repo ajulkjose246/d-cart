@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- home -->
     <link rel="stylesheet" href="{% static 'home/home.css'%}">
     <!-- animation -->
@@ -44,12 +45,17 @@
         <nav class="nav">
             <div> <a href="#" class="nav_logo"><i class="fas fa-angry"></i> <span class="nav_logo-name">Example</span>
                 </a>
-                <div class="nav_list"> <a href="#" class="nav_link active"> <i class="fab fa-angellist"></i> <span
-                            class="nav_name">Dashboard</span> </a> <a href="#" class="nav_link"> <i
-                            class="fas fa-anchor"></i> <span class="nav_name">Stats</span> </a> <a
-                        class="nav_link nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false"> <i class="fas fa-award"></i> <span
-                            class="nav_name">Dropdown</span> </a>
+                <div class="nav_list">
+                    <a href="#" class="nav_link active">
+                        <i class="fab fa-angellist"></i> <span class="nav_name">Dashboard</span>
+                    </a>
+                    <a href="#" class="nav_link">
+                        <i class="fas fa-anchor"></i> <span class="nav_name">Stats</span>
+                    </a>
+                    <a class="nav_link nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-award"></i> <span class="nav_name">Dropdown</span>
+                    </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#">Action</a></li>
                         <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -57,9 +63,18 @@
                             <hr class="dropdown-divider">
                         </li>
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li></li>
                     </ul>
+                    {% if user.is_authenticated %}
+                    <a href="{%url 'logout'%}" class="nav_link">
+                        <i class="fas fa-door-open"></i> <span class="nav_name">Logout</span>
+                    </a>
+                    {% else %}
+                    <a href="{%url 'login'%}" class="nav_link">
+                        <i class="fas fa-right-to-bracket"></i> <span class="nav_name">Login</span>
+                    </a>
+                    {% endif %}
                 </div>
-            </div> <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span
-                    class="nav_name">SignOut</span> </a>
+            </div>
         </nav>
     </div>
